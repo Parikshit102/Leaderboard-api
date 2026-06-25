@@ -1,4 +1,88 @@
-For your leaderboard project, you don't need a very complex system design. Recruiters usually expect a simple but well-thought-out architecture.
+
+
+🏆 Competitive Leaderboard API
+
+A simple leaderboard application built using FastAPI, PostgreSQL, and SQLAlchemy. Users can submit scores and view rankings through a lightweight web interface.
+
+✨ Features
+Add new players with scores
+View leaderboard rankings
+Automatic ranking based on score
+Simple and responsive UI
+🛠️ Tech Stack
+Component	Technology
+Backend	FastAPI
+Database	PostgreSQL
+ORM	SQLAlchemy
+Frontend	HTML, CSS, JavaScript
+Frontend Server	Flask
+📂 Project Structure
+project/
+│
+├── main.py                 # FastAPI entry point
+├── database.py             # Database configuration
+├── routers/
+│   └── leaderboard.py      # API routes
+│
+├── models/
+│   └── player.py           # Database model
+│
+├── templates/
+│   └── index.html          # Frontend page
+│
+├── static/
+│   ├── app.js              # Frontend logic
+│   └── style.css           # Styling
+│
+├── app.py                  # Flask server
+└── README.md
+ Getting Started
+1. Clone the Repository
+git clone <your-repository-url>
+cd leaderboard-project
+2. Create a Virtual Environment
+Windows
+python -m venv venv
+venv\Scripts\activate
+Linux/Mac
+python3 -m venv venv
+source venv/bin/activate
+3. Install Dependencies
+pip install fastapi uvicorn sqlalchemy psycopg2-binary flask
+4. Configure PostgreSQL
+
+Create a PostgreSQL database:
+
+CREATE DATABASE leaderboard_db;
+
+Update database.py:
+
+DATABASE_URL = "postgresql://username:password@localhost:5432/leaderboard_db"
+
+Example:
+
+DATABASE_URL = "postgresql://postgres:password@localhost:5432/leaderboard_db"
+5. Start the FastAPI Server
+uvicorn main:app --reload
+
+You should see:
+
+INFO: Uvicorn running on http://127.0.0.1:8000
+API Documentation
+
+Open in browser:
+
+http://127.0.0.1:8000/docs
+6. Start the Frontend
+
+Open a new terminal and run:
+
+python app.py
+
+Frontend will be available at:
+
+http://127.0.0.1:5000
+
 
 # Competitive Leaderboard System Design
 
@@ -249,8 +333,6 @@ Possible improvements:
 * Add rate limiting.
 * Containerize using Docker.
 * Deploy behind Nginx.
-
-This design is more than sufficient for a backend assignment and should impress recruiters because it shows both the current implementation and how it can scale in production.
 
 Challenges - First to integerate backend with frontend properly .
 Second is I have time limit that's why I can't able to give full focus on this project.
