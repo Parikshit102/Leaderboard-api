@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leaderboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <h1>🏆 Leaderboard</h1>
+      <p>Add players and scores — connected to FastAPI backend</p>
+    </div>
+
+    <!-- Summary cards -->
+    <div class="summary">
+      <div class="metric">
+        <div class="metric-label">Total players</div>
+        <div class="metric-value" id="total-players">0</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Top score</div>
+        <div class="metric-value" id="top-score">—</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Average score</div>
+        <div class="metric-value" id="avg-score">—</div>
+      </div>
+    </div>
+
+    <!-- Add player form -->
+    <div class="form-card">
+      <h2>Add player</h2>
+      <div class="form-row">
+        <div class="field">
+          <label for="player-name">Player name</label>
+          <input type="text" id="player-name" placeholder="e.g. Alice" />
+        </div>
+        <div class="field">
+          <label for="player-score">Score</label>
+          <input type="number" id="player-score" placeholder="e.g. 9500" min="0" />
+        </div>
+        <button onclick="addPlayer()">+ Add</button>
+      </div>
+      <!-- API NOTE: this button triggers POST /leaderboard/add on FastAPI -->
+      <!-- <p class="api-note">POST /leaderboard/add — saves player + score to database</p> -->
+      <p class="status" id="add-status"></p>
+    </div>
+
+    <!-- Leaderboard table -->
+    <div class="leaderboard-card">
+      <div class="leaderboard-header">
+        <span>Rank</span>
+        <span>Player</span>
+        <span>Score</span>
+        <span>Added</span>
+      </div>
+      <div id="leaderboard-body">
+        <div class="empty">No players yet — add one above</div>
+      </div>
+    </div>
+
+    <!-- API NOTE: on page load, GET /leaderboard/ is called to fetch all players -->
+   <!-- <p class="api-note">GET /leaderboard/ — fetches all players sorted by score</p> -->
+
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
